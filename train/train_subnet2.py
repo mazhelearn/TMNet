@@ -43,12 +43,12 @@ import dist_chamfer as ext
 distChamfer = ext.chamferDist()
 
 server = 'http://localhost/'
-vis = visdom.Visdom(server=server, port=8888, env=opt.env, use_incoming_socket=False)
+vis = visdom.Visdom(port=8097, env=opt.env)
 now = datetime.datetime.now()
 save_path = opt.env
 dir_name = os.path.join('./log', save_path)
 if not os.path.exists(dir_name):
-    os.mkdir(dir_name)
+    os.makedirs(dir_name)
 logname = os.path.join(dir_name, 'log.txt')
 blue = lambda x: '\033[94m' + x + '\033[0m'
 print("Random Seed: ", opt.manualSeed)

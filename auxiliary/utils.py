@@ -105,7 +105,7 @@ def get_boundary(faces):
 def samples_random(faces_cuda, pointsRec, sampled_number):
 
     if len(faces_cuda.size())==2:
-        faces_points = pointsRec.index_select(1, faces_cuda.view(-1)).contiguous().\
+        faces_points = pointsRec.index_select(1, faces_cuda.contiguous().view(-1)).contiguous().\
             view(pointsRec.size()[0], faces_cuda.size()[0], faces_cuda.size()[1], pointsRec.size()[2])
     elif len(faces_cuda.size())==3:
         faces_points = pointsRec.index_select(1, faces_cuda.view(-1)).contiguous().\
